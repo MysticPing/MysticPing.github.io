@@ -125,7 +125,7 @@
         var buttons = document.getElementsByClassName("highlightable");
         for (i = 0; i < buttons.length; i++) {
             buttons[i].addEventListener("click", function() {
-                mainPage.outerHTML = this.nextElementSibling;
+                mainPage.innerHTML = this.nextElementSibling.innerHTML;
             });
         }
         </script>
