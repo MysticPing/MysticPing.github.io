@@ -54,6 +54,13 @@
                     background-color: #546e7a;
                     }
         </style>
+
+    <style>
+            .mainPage {
+                 margin-left: calc(30px+30%);
+                }
+    </style>
+
         <div class="full-height"
             style="
             background: #455a64;
@@ -71,6 +78,9 @@
             <h2 align ="center" class="highlightable">
                 About
             </h2>
+            <div>
+                EXAMPLE PAGE
+            </div>
             <h2 align ="center" class="collapsable">
                     Projects
             </h2>
@@ -82,8 +92,11 @@
             <h2 align ="center" class="highlightable">
                     Contact
             </h2>
+            <div>
+                    EXAMPLE PAGE
+            </div>
         </div>
-        <div style="margin-left: calc(30px + 30%);">
+        <div style="margin-left: calc(30px + 30%);" class="mainPage">
             <b style="color: rgba(255, 255, 255, 0.85); display:inline; font-size: 60px">
                 Example Title
             </b>
@@ -106,6 +119,13 @@
             } else {
                 content.style.display = "block";
             }
+            });
+        }
+        var mainPage = document.getElementsByClassName("mainPage")[0];
+        var buttons = document.getElementsByClassName("highlightable");
+        for (i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function() {
+                mainPage.outerHTML = this.nextElementSibling;
             });
         }
         </script>
