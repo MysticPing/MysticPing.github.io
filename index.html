@@ -14,32 +14,32 @@
                     }
             </style>
             <style>
-            .collapsable {
-                background-color: #455a64;
-                color: rgba(255, 255, 255, 0.85);
-                cursor: pointer;
-                padding: 15px;
-                margin-top: 0px;
-                margin-bottom: 0px;
-              }
-              
-              /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-              .active, .collapsable:hover {
-                background-color: #546e7a;
-              }
-              
-              /* Style the collapsible content. Note: hidden by default */
-              .content {
-                padding: 0 18px;
-                display: none;
-                overflow: hidden;
-                background-color: #546e7a;
-                color: rgba(255, 255, 255, 0.75);
-                margin-top: 0px;
-                margin-bottom: 0px;
-              }
-        </style>
-        <style>
+                .collapsable {
+                    background-color: #455a64;
+                    color: rgba(255, 255, 255, 0.85);
+                    cursor: pointer;
+                    padding: 15px;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                }
+                
+                /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+                .active, .collapsable:hover {
+                    background-color: #546e7a;
+                }
+                
+                /* Style the collapsible content. Note: hidden by default */
+                .content {
+                    padding: 0 18px;
+                    display: none;
+                    overflow: hidden;
+                    background-color: #546e7a;
+                    color: rgba(255, 255, 255, 0.75);
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                }
+            </style>
+             <style>
                 .highlightable {
                     background-color: #455a64;
                     color: rgba(255, 255, 255, 0.85);
@@ -55,11 +55,11 @@
                     }
         </style>
 
-    <style>
-            .mainPage {
-                 margin-left: calc(30px+30%);
+        <style>
+                .mainPage {
+                    margin-left: calc(30px+30%);
                 }
-    </style>
+        </style>
 
         <div class="full-height"
             style="
@@ -78,30 +78,61 @@
             <h2 align ="center" class="highlightable">
                 About
             </h2>
-            <div>
-                EXAMPLE PAGE
+            <div style="display: none">
+                <b style="color: rgba(255, 255, 255, 0.85); display:inline; font-size: 60px">
+                    About
+                </b>
+                <div style="color: rgba(255, 255, 255, 0.85); font-size: 20px; width: 60%; min-width: 500px; ">
+                    Welcome to my website! I am a first year student at Chalmers University of Technology, studying Computer Science and Engineering. I intend to use this website to publish information and pictures regarding my programming projects here.<br><br>
+                    This is my first time using CSS/HTML/Javascript, so the site itself is very much work in progress.
+                </div>            
             </div>
             <h2 align ="center" class="collapsable">
                     Projects
             </h2>
             <div class="content" align="center">
-                <h3 class="highlightable2">Foo</h3>
-                <h3 class="highlightable2">Foo</h3>
-                <h3 class="highlightable2">Foo</h3>
+                <div class="highlightable" style="margin-left: 4%; width: 100%">
+                    <h3>Foo</h3>
+                </div>
+                <div style="display: none">
+                    <b style="color: rgba(255, 255, 255, 0.85); display:inline; font-size: 60px">
+                        Project A
+                    </b>
+                    <div style="color: rgba(255, 255, 255, 0.85); font-size: 20px; width: 60%; min-width: 500px; ">
+                        Interesting information and pictures
+                    </div>                     
+                </div>
+                <div class="highlightable" style="margin-left: 4%; width: 100%">
+                    <h3>Foo2</h3>
+                </div>
+                <div style="display: none">
+                    <b style="color: rgba(255, 255, 255, 0.85); display:inline; font-size: 60px">
+                        Project B
+                    </b>
+                    <div style="color: rgba(255, 255, 255, 0.85); font-size: 20px; width: 60%; min-width: 500px; ">
+                        Interesting information and pictures
+                    </div>                     
+                </div>
             </div>
             <h2 align ="center" class="highlightable">
                     Contact
             </h2>
-            <div>
-                    EXAMPLE PAGE
-            </div>
+            <div style="display: none">
+                <b style="color: rgba(255, 255, 255, 0.85); display:inline; font-size: 60px">
+                    Contact
+                </b>
+                <div style="color: rgba(255, 255, 255, 0.85); font-size: 20px; width: 60%; min-width: 500px; ">
+                    You can reach me at
+                    mail@victorelhajj.se
+                </div>            </div>
         </div>
-        <div style="margin-left: calc(30px + 30%);" class="mainPage">
+        <div style="margin-left: calc(30px + 10%);" class="mainPage">
             <b style="color: rgba(255, 255, 255, 0.85); display:inline; font-size: 60px">
-                Example Title
+                About
             </b>
-            <div style="color: rgba(255, 255, 255, 0.85); font-size: 20px; width: 50%; min-width: 500px; ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <div style="color: rgba(255, 255, 255, 0.85); font-size: 20px; width: 60%; min-width: 500px; ">
+                Welcome to my website! I am a first year student at Chalmers University of Technology, studying Computer Science and Engineering. I intend to use this website to publish information and pictures regarding my programming projects here.<br><br>
+                This is my first time using CSS/HTML/Javascript, so the site itself is very much work in progress.
             </div>
         </div>
 
@@ -125,7 +156,7 @@
         var buttons = document.getElementsByClassName("highlightable");
         for (i = 0; i < buttons.length; i++) {
             buttons[i].addEventListener("click", function() {
-                mainPage.appendChild(this.nextElementSibling.innerHTML);
+                mainPage.innerHTML = this.nextElementSibling.innerHTML;
             });
         }
         </script>
