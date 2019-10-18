@@ -1,171 +1,35 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
 <html>
-    <title>Victor's Site</title>
-    <body style="   background: linear-gradient(to left, #455a64, #546e7a);">
-            <style>
-                    html, body {
-                      height: 100%;
-                      margin: 0;
-                    }
-                    
-                    .full-height {
-                      height: 100%;
-                    }
-            </style>
-            <style>
-                .collapsable {
-                    background-color: #455a64;
-                    color: rgba(255, 255, 255, 0.85);
-                    cursor: pointer;
-                    padding: 15px;
-                    margin-top: 0px;
-                    margin-bottom: 0px;
-                }
-                
-                /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-                .active, .collapsable:hover {
-                    background-color: #546e7a;
-                }
-                
-                /* Style the collapsible content. Note: hidden by default */
-                .content {
-                    padding: 0 18px;
-                    display: none;
-                    overflow: hidden;
-                    background-color: #546e7a;
-                    color: rgba(255, 255, 255, 0.75);
-                    margin-top: 0px;
-                    margin-bottom: 0px;
-                }
-            </style>
-             <style>
-                .highlightable {
-                    background-color: #455a64;
-                    color: rgba(255, 255, 255, 0.85);
-                    cursor: pointer;
-                    padding: 15px;
-                    margin-top: 0px;
-                    margin-bottom: 0px;
-                    }
-                    
-                    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-                    .active, .highlightable:hover {
-                    background-color: #546e7a;
-                    }
-        </style>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style.css">
+    <title>
+    Victor El Hajj
+    </title>
+</head>
 
-        <style>
-                .mainPage {
+<body>
+<!--Navbar-->
+<div class="navBar">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">APK</a></li>
+  </ul>
+</div>
 
+<div class="mainText">
+<p>
+  Example
+</p>
+<p>
+  Example
+</p>
+<p>
+  Example
+</p>
+                                                                                        
+</div>
 
-            </style>
-
-
-            <style>
-
-
-
-                .collapsable {                    margin-left: calc(30px+30%);
-                }
-        </style>
-
-        <div class="full-height"
-            style="
-            background: #455a64;
-            margin-left: 0px;
-            display: block;
-            width: 9%;
-            min-width: 150px;
-            float: left;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 0, 0, 0.1) inset;">
-            <h1 align ="center" style="color: rgba(255, 255, 255, 0.85);">
-                Index
-            </h1>
-            <br>
-            <h2 align ="center" class="highlightable">
-                About
-            </h2>
-            <div style="display: none">
-                <b style="color: rgba(255, 255, 255, 0.85); display:inline; font-size: 60px">
-                    About
-                </b>
-                <div style="color: #fa6607; font-size: 20px; width: 60%; min-width: 500px; ">
-                    <h1>Work in progress</h1>
-                    <h6 style="color: rgba(255, 255, 255, 0.85)">(Snälla kolla inte på källkoden)</h6>
-                </div>            
-            </div>
-            <h2 align ="center" class="collapsable">
-                    Projects
-            </h2>
-            <div class="content" align="center">
-                <div class="highlightable" style="margin-left: 4%; width: 100%">
-                    <h3>Foo</h3>
-                </div>
-                <div style="display: none">
-                    <b style="color: rgba(255, 255, 255, 0.85); display:inline; font-size: 60px">
-                        Project A
-                    </b>
-                    <div style="color: rgba(255, 255, 255, 0.85); font-size: 20px; width: 60%; min-width: 500px; ">
-                        Interesting information and pictures
-                    </div>                     
-                </div>
-                <div class="highlightable" style="margin-left: 4%; width: 100%">
-                    <h3>Foo2</h3>
-                </div>
-                <div style="display: none">
-                    <b style="color: rgba(255, 255, 255, 0.85); display:inline; font-size: 60px">
-                        Project B
-                    </b>
-                    <div style="color: rgba(255, 255, 255, 0.85); font-size: 20px; width: 60%; min-width: 500px; ">
-                        Interesting information and pictures
-                    </div>                     
-                </div>
-            </div>
-            <h2 align ="center" class="highlightable">
-                    Contact
-            </h2>
-            <div style="display: none">
-                <b style="color: rgba(255, 255, 255, 0.85); display:inline; font-size: 60px">
-                    Contact
-                </b>
-                <div style="color: rgba(255, 255, 255, 0.85); font-size: 20px; width: 60%; min-width: 500px; ">
-                    You can reach me at
-                    mail@victorelhajj.se
-                </div>            </div>
-        </div>
-        <div style="margin-left: 240px;" class="mainPage">
-            <b style="color: rgba(255, 255, 255, 0.85); display:inline; font-size: 60px">
-                About
-            </b>
-            <div style="color: #fa6607; font-size: 20px; width: 60%; min-width: 500px; ">
-                <h1>Work in progress</h1>
-                <h6 style="color: rgba(255, 255, 255, 0.85)">(Snälla kolla inte på källkoden)</h6>
-            </div>          
-        </div>
-
-    </body>
-    <script>
-        var coll = document.getElementsByClassName("collapsable");
-        var i;
-        
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-            });
-        }
-        var mainPage = document.getElementsByClassName("mainPage")[0];
-        var buttons = document.getElementsByClassName("highlightable");
-        for (i = 0; i < buttons.length; i++) {
-            buttons[i].addEventListener("click", function() {
-                mainPage.innerHTML = this.nextElementSibling.innerHTML;
-            });
-        }
-        </script>
+</body>
 </html>
