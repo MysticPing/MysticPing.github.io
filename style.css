@@ -30,6 +30,12 @@ div.mainText {
     margin-left: 10%;
     margin-right: 10%;
     background: white;
+    height: 100%;
+}
+
+div.mainText p {
+    margin-left: 5%;
+    margin-right: 5;
 }
 
 @font-face {
@@ -40,6 +46,6 @@ div.mainText {
 html, body {
     margin: 0;
     font-family: adobesource;
-    background: #DDDDDD;
+    background: linear-gradient(to left, #cccccc, #dddddd);;
 }
 
