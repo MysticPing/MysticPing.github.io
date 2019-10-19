@@ -35,7 +35,12 @@ div.mainText {
 
 div.mainText p {
     margin-left: 5%;
-    margin-right: 5;
+    margin-right: 5%;
+}
+
+div.mainText table{
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 @font-face {
