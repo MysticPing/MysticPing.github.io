@@ -34,19 +34,40 @@ div.mainText {
 }
 
 div.mainText p {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 div.mainText table{
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 10%;
 }
 
 @font-face {
     font-family: adobesource;
     src: url('SourceSansPro-Regular.ttf');
-  }
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table th {
+    text-align: left;
+    background: #333;
+    color: white;
+    border: 1px solid #333;
+    padding: 8px;
+}
+
+table td {
+    text-align: left;
+    border: 1px solid #111;
+    padding: 6px;
+}
+
+tr:hover {
+    background: #eee
+}
 
 html, body {
     margin: 0;
