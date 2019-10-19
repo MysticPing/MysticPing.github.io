@@ -15,6 +15,7 @@ def convert():
     old_format = pd.read_html("old_format.xls")
     old_format[0].to_excel("new_format.xlsx")
 
+# Uncomment these two functions when you want to update the spreadsheets
 #download_xls()
 #convert()
 
@@ -47,12 +48,16 @@ for row in iterRow:
     name = name1 + " " + name2
     # Type
     itemtype = row[12].value
+    # More specific type
+    spectype = str(row[13].value)
+    if (spectype == 'None'):
+        spectype = '' 
     # Style
     style = str(row[14].value)
     if (style == 'None'):
         style = ''
     # Add to list, APK and Name
-    APKList.append((APK, name, itemtype, style, ID))
+    APKList.append((APK, name, itemtype, style, spectype, ID))
 
 # Sorted for highest APK first
 APKList.sort(reverse=True)
@@ -60,8 +65,8 @@ APKList.sort(reverse=True)
 os.remove("apk.txt")
 f = open("apk.txt", "wb")
 
-f.write("<table>".encode("utf-8"))
-f.write("<tr><th>APK</th><th>Namn</th><th>Sort</th><th>Stil</th></tr>".encode("utf-8"))
+f.write('<table id = "apktable">'.encode("utf-8"))
+f.write("<tr><th>APK</th><th>Name</th><th>Type</th><th></th><th>Style</th></tr>".encode("utf-8"))
 for i in range(len(APKList)):
     f.write("<tr>".encode("utf-8"))
 
@@ -72,7 +77,7 @@ for i in range(len(APKList)):
     
     # Name
     f.write('<td><a href="https://www.systembolaget.se/'.encode("utf-8"))
-    f.write(str(APKList[i][4]).encode("utf-8"))
+    f.write(str(APKList[i][5]).encode("utf-8"))
     f.write('">'.encode("utf-8"))
     f.write((APKList[i][1].encode("utf-8")))
     f.write("</a></td>".encode("utf-8"))
@@ -80,6 +85,11 @@ for i in range(len(APKList)):
     # Type
     f.write("<td>".encode("utf-8"))
     f.write((APKList[i][2].encode("utf-8")))
+    f.write("</td>".encode("utf-8"))
+
+    # Other Type
+    f.write("<td>".encode("utf-8"))
+    f.write((APKList[i][4].encode("utf-8")))
     f.write("</td>".encode("utf-8"))
 
     #Style

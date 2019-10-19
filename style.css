@@ -40,6 +40,11 @@ div.mainText p {
 
 div.mainText table{
     margin-left: 10%;
+    width: 80%;
+}
+
+div.mainText div{
+    margin-left: 10%;
 }
 
 @font-face {
