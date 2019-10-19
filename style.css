@@ -65,6 +65,12 @@ table td {
     padding: 6px;
 }
 
+table a {
+    display:block;
+    text-decoration: none;
+    color: black;
+}
+
 tr:hover {
     background: #eee
 }
