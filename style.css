@@ -80,6 +80,17 @@ tr:hover {
     background: #eee
 }
 
+table.noborder td{
+    text-align: left;
+    padding: 6px;
+    border: none;
+}
+
+table.noborder tr:hover {
+    background: white;
+}
+
+
 html, body {
     margin: 0;
     font-family: adobesource;

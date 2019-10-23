@@ -27,16 +27,25 @@
     </p>
   </h1>  
   <p>
-    Alcohol per krona. Measured by milliliter ethanol per krona. Product information is taken from Systembolagets open API.
+    Alcohol per krona. Measured by milliliter ethanol per krona. Prices include deposits. Product information is taken from Systembolagets open API. <br> This website is in not affiliated with Systembolaget. 
   </p>
-  <P>
-    This website is in not affiliated with Systembolaget. Last updated 19/10/2019.
-  </P>
-  <div>Filter by Type:   <input type="text" id = "myInput", ></input><button onclick = "testFunction();">Confirm</button></div>
+  <p>
+    Last updated 23/10/2019.
+  </p>
+  <table class = "noborder">
+  <tr><td>Filter by Type:</td><td><input type="text" id = "typeInput", ></input><button onclick = "typeSort();">Filter</button></td></tr>
+  <tr><td>Filter by Name:</td><td><input type="text" id = "nameInput", ></input><button onclick = "nameSort();">Filter</button></td></tr>
+  <tr><td>Quick search</td><td>
+    <button onclick = "beerSort();">Beer</button>
+    <button onclick = "ciderSort();">Cider</button>
+    <button onclick = "wineSort();">Wine</button>
+    <button onclick = "noSort();">Show All</button>
+
+  </td></tr>
+  </table>
   <script>
-    function testFunction() {
-      input =  document.getElementById("myInput");
-      filter = input.value.toLowerCase();
+    function Sort(filter) {
+      //filter = input.value.toLowerCase();
       table = document.getElementById("apktable");
       tr = table.getElementsByTagName("tr");
       for (i = 1; i < tr.length; i++)
@@ -46,6 +55,44 @@
 
         // Type td
         td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+
+          if (txtValue.toLowerCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } 
+        }
+        
+      }
+    }
+    function typeSort() {
+      input =  document.getElementById("typeInput");
+      Sort(input.value.toLowerCase());
+    }
+    function beerSort() {
+      Sort("öl");
+    }
+    function ciderSort() {
+      Sort("cider");
+    }
+    function wineSort() {
+      Sort("vin");
+    }
+    function noSort() {
+      Sort("");
+    }
+    function nameSort() {
+      input =  document.getElementById("nameInput");
+      filter = input.value.toLowerCase();
+      table = document.getElementById("apktable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 1; i < tr.length; i++)
+      {
+        // Hide row
+        tr[i].style.display = "none";
+
+        // Type td
+        td = tr[i].getElementsByTagName("td")[1];
         if (td) {
           txtValue = td.textContent || td.innerText;
 
