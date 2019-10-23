@@ -116,13 +116,13 @@ for line in lines:
             
              # Volume
             f.write("<td>")
-            f.write((APKList[i][7]))
+            f.write(str(APKList[i][7]))
             f.write(" ml")
             f.write("</td>")
 
             # Volume
             f.write("<td>")
-            f.write((APKList[i][8]))
+            f.write(str(APKList[i][8]))
             f.write(" kr")
             f.write("</td>")
 
