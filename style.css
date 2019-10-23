@@ -60,13 +60,13 @@ table th {
     text-align: left;
     background: #333;
     color: white;
-    border: 1px solid #333;
+    border: none;
     padding: 8px;
 }
 
 table td {
     text-align: left;
-    border: 1px solid #111;
+    border: none;
     padding: 6px;
 }
 

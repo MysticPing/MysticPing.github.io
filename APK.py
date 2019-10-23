@@ -75,14 +75,18 @@ f.close()
 # Keep all existing lines except when you encounter table_location, then replace next line
 f = open("apk.html", "w", encoding="utf-8")
 
-for line in lines:
+for i, line in enumerate(lines):
     if line == "<!--table_location-->\n":
         # header and table start
         f.write("<!--table_location-->")
         f.write('\n<table id = "apktable">')
-        f.write("<tr><th>APK</th><th>Name</th><th>Type</th><th>Style</th><th>ABV</th><th>Volume</th><th>Price</th></tr>")
+        f.write("<tr><th></th><th>APK</th><th>Name</th><th>Type</th><th>Style</th><th>ABV</th><th>Volume</th><th>Price</th></tr>")
         for i in range(len(APKList)):
             f.write("<tr>")
+            # Number
+            f.write("<td><strong>")
+            f.write(str(i))
+            f.write("</strong></td>")
 
             # APK
             f.write("<td>")
