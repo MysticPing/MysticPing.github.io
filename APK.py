@@ -35,8 +35,10 @@ for row in iterRow:
     # Convert to actual value by removing % and converting to float
     ABV = row[23].value.strip('%')
     ABV = float(ABV)/100
-    # Price
+    # Price. row 7 is sometimes empty. Row 7 is deposit
     price = row[6].value
+    if (row[7].value != None):
+        price += row[7].value
     APK = (ABV*volume)/price
     # Name
     name1 = str(row[4].value)
@@ -78,13 +80,13 @@ for line in lines:
         # header and table start
         f.write("<!--table_location-->")
         f.write('\n<table id = "apktable">')
-        f.write("<tr><th>APK</th><th>Name</th><th>Type</th><th></th><th>Style</th></tr>")
+        f.write("<tr><th>APK</th><th>Name</th><th>Type</th><th>Style</th><th>ABV</th><th>Volume</th><th>Price</th></tr>")
         for i in range(len(APKList)):
             f.write("<tr>")
 
             # APK
             f.write("<td>")
-            f.write(("%.2f" % APKList[i][0]))
+            f.write(("%.3f" % APKList[i][0]))
             f.write("</td>")
             
             # Name
@@ -99,14 +101,12 @@ for line in lines:
             f.write((APKList[i][2]))
             f.write("</td>")
 
-            # Other Type
+            # Style. If it contains more details add those with a dash seperator
             f.write("<td>")
-            f.write((APKList[i][4]))
-            f.write("</td>")
+            f.write(APKList[i][4])
 
-            #Style
-            f.write("<td>")
-            f.write(APKList[i][3])
+            if APKList[i][3] != "":
+                f.write(" — " + APKList[i][3])
             f.write("</td>")
 
             f.write("</tr>")
