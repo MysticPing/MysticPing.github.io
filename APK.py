@@ -2,8 +2,12 @@ import pandas as pd
 import openpyxl as op
 import urllib.request
 import os
+from datetime import datetime
+import subprocess
+
 # Downloads xls file
 def download_xls():
+    print("Downloading xls.")
     url = "https://www.systembolaget.se/api/assortment/products/xls"
     urllib.request.urlretrieve(url, "old_format.xls")
 
@@ -12,13 +16,15 @@ def download_xls():
 # but can't find any good libraries for xls files, even though its really
 # a html file...
 def convert():
+    print("Converting to xlsx.")
     old_format = pd.read_html("old_format.xls")
     old_format[0].to_excel("new_format.xlsx")
 
 # Uncomment these two functions when you want to update the spreadsheets
-#download_xls()
-#convert()
+download_xls()
+convert()
 
+print("Loading into openpyxl.")
 wb = op.load_workbook("new_format.xlsx")
 ws = wb.active
 
@@ -26,6 +32,7 @@ APKList = []
 
 iterRow = iter(tuple(ws.rows))
 next(iterRow)
+print("Parsing sheet.")
 for row in iterRow:
     # ID, used to link to Systembolaget website
     ID = row[1].value
@@ -64,8 +71,6 @@ for row in iterRow:
 # Sorted for highest APK first
 APKList.sort(reverse=True)
 
-#os.remove("apk.txt")
-
 # Save existing lines
 f = open("apk.html", "r", encoding="utf-8")
 data = f.readlines()
@@ -74,13 +79,13 @@ f.close()
 
 # Keep all existing lines except when you encounter table_location, then replace next line
 f = open("apk.html", "w", encoding="utf-8")
-
+print ("Creating html table.")
 for i, line in enumerate(lines):
     if line == "<!--table_location-->\n":
         # header and table start
         f.write("<!--table_location-->")
         f.write('\n<table id = "apktable">')
-        f.write("<tr><th></th><th>APK</th><th>Name</th><th>Type</th><th>Style</th><th>ABV</th><th>Volume</th><th>Price</th></tr>")
+        f.write("<thead><tr><th></th><th>APK</th><th>Name</th><th>Type</th><th>Style</th><th>ABV</th><th>Volume</th><th>Price</th></tr></thead>")
         for i in range(len(APKList)):
             f.write("<tr>")
             # Number
@@ -135,7 +140,18 @@ for i, line in enumerate(lines):
         f.write("</table>\n")
         # this skips the next line, which includes the old table
         next(lines)
+    elif "Last updated:" in line:
+        f.write("Last updated: ")
+        f.write(datetime.now().strftime('%Y-%m-%d %H:%M'))
+        f.write('\n')
     else:
         f.writelines(line)
 
 f.close()
+print("Cleaning sheet files.")
+os.remove("old_format.xls")
+os.remove("new_format.xlsx")
+
+print("Making and pushing commit.")
+subprocess.call(["git", "commit", "-am", "Automatic Update "+datetime.now().strftime('%Y-%m-%d')])
+print("Done!")

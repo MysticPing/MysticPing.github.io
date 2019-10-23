@@ -60,13 +60,11 @@ table th {
     text-align: left;
     background: #333;
     color: white;
-    border: none;
     padding: 8px;
 }
 
 table td {
     text-align: left;
-    border: none;
     padding: 6px;
 }
 
@@ -85,6 +83,8 @@ table.noborder td{
     padding: 6px;
     border: none;
 }
+
+
 
 table.noborder tr:hover {
     background: white;
