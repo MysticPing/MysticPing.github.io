@@ -33,8 +33,8 @@ for row in iterRow:
     volume = row[8].value
     # Alkohok by %. Stored as a string
     # Convert to actual value by removing % and converting to float
-    ABV = row[23].value.strip('%')
-    ABV = float(ABV)/100
+    ABVstr = row[23].value.strip('%')
+    ABV = float(ABVstr)/100
     # Price. row 7 is sometimes empty. Row 7 is deposit
     price = row[6].value
     if (row[7].value != None):
@@ -59,7 +59,7 @@ for row in iterRow:
     if (style == 'None'):
         style = ''
     # Add to list, APK and Name
-    APKList.append((APK, name, itemtype, style, spectype, ID))
+    APKList.append((APK, name, itemtype, style, spectype, ID, ABVstr, volume, price))
 
 # Sorted for highest APK first
 APKList.sort(reverse=True)
@@ -107,6 +107,23 @@ for line in lines:
 
             if APKList[i][3] != "":
                 f.write(" — " + APKList[i][3])
+            f.write("</td>")
+
+            # ABV
+            f.write("<td>")
+            f.write((APKList[i][6]))
+            f.write("</td>")           
+            
+             # Volume
+            f.write("<td>")
+            f.write((APKList[i][7]))
+            f.write(" ml")
+            f.write("</td>")
+
+            # Volume
+            f.write("<td>")
+            f.write((APKList[i][8]))
+            f.write(" kr")
             f.write("</td>")
 
             f.write("</tr>")
