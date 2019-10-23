@@ -65,8 +65,19 @@ for row in iterRow:
     style = str(row[14].value)
     if (style == 'None'):
         style = ''
+
+    # Availability
+    # FS ordinarie sortiment
+    # FSN Ordinarie
+    # FSB Ordinarie
+    # BS Övrigt (beställning?)
+    # TSLS Lokalt
+    # TSE Små partier
+
+    # TSS Seasonal
+    availability = row[24].value
     # Add to list, APK and Name
-    APKList.append((APK, name, itemtype, style, spectype, ID, ABVstr, volume, price))
+    APKList.append((APK, name, itemtype, style, spectype, ID, ABVstr, volume, price, availability))
 
 # Sorted for highest APK first
 APKList.sort(reverse=True)
@@ -90,7 +101,7 @@ for i, line in enumerate(lines):
             f.write("<tr>")
             # Number
             f.write("<td><strong>")
-            f.write(str(i))
+            f.write(str(i+1))
             f.write("</strong></td>")
 
             # APK
@@ -136,6 +147,11 @@ for i, line in enumerate(lines):
             f.write(" kr")
             f.write("</td>")
 
+            # Availability
+            f.write('<td style="display: none;">')
+            f.write(APKList[i][9])
+            f.write("</td>")
+
             f.write("</tr>")
         f.write("</table>\n")
         # this skips the next line, which includes the old table
@@ -154,4 +170,5 @@ os.remove("new_format.xlsx")
 
 print("Making and pushing commit.")
 subprocess.call(["git", "commit", "-am", "Automatic Update "+datetime.now().strftime('%Y-%m-%d')])
+subprocess.call(["git", "push"])
 print("Done!")
