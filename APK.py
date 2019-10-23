@@ -111,7 +111,8 @@ for line in lines:
 
             # ABV
             f.write("<td>")
-            f.write((APKList[i][6]))
+            f.write("%.1f" % float(APKList[i][6]))
+            f.write("%")
             f.write("</td>")           
             
              # Volume
@@ -120,9 +121,9 @@ for line in lines:
             f.write(" ml")
             f.write("</td>")
 
-            # Volume
+            # Price
             f.write("<td>")
-            f.write(str(APKList[i][8]))
+            f.write("%.2f" % APKList[i][8])
             f.write(" kr")
             f.write("</td>")
 
