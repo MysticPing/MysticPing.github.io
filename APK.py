@@ -62,41 +62,58 @@ for row in iterRow:
 # Sorted for highest APK first
 APKList.sort(reverse=True)
 
-os.remove("apk.txt")
-f = open("apk.txt", "wb")
+#os.remove("apk.txt")
 
-f.write('<table id = "apktable">'.encode("utf-8"))
-f.write("<tr><th>APK</th><th>Name</th><th>Type</th><th></th><th>Style</th></tr>".encode("utf-8"))
-for i in range(len(APKList)):
-    f.write("<tr>".encode("utf-8"))
+# Save existing lines
+f = open("apk.html", "r", encoding="utf-8")
+data = f.readlines()
+lines = iter(data)
+f.close()
 
-    # APK
-    f.write("<td>".encode("utf-8"))
-    f.write(("%.2f" % APKList[i][0]).encode("utf-8"))
-    f.write("</td>".encode("utf-8"))
-    
-    # Name
-    f.write('<td><a href="https://www.systembolaget.se/'.encode("utf-8"))
-    f.write(str(APKList[i][5]).encode("utf-8"))
-    f.write('">'.encode("utf-8"))
-    f.write((APKList[i][1].encode("utf-8")))
-    f.write("</a></td>".encode("utf-8"))
-    
-    # Type
-    f.write("<td>".encode("utf-8"))
-    f.write((APKList[i][2].encode("utf-8")))
-    f.write("</td>".encode("utf-8"))
+# Keep all existing lines except when you encounter table_location, then replace next line
+f = open("apk.html", "w", encoding="utf-8")
 
-    # Other Type
-    f.write("<td>".encode("utf-8"))
-    f.write((APKList[i][4].encode("utf-8")))
-    f.write("</td>".encode("utf-8"))
+for line in lines:
+    if line == "<!--table_location-->\n":
+        # header and table start
+        f.write("<!--table_location-->")
+        f.write('\n<table id = "apktable">')
+        f.write("<tr><th>APK</th><th>Name</th><th>Type</th><th></th><th>Style</th></tr>")
+        for i in range(len(APKList)):
+            f.write("<tr>")
 
-    #Style
-    f.write("<td>".encode("utf-8"))
-    f.write((APKList[i][3].encode("utf-8")))
-    f.write("</td>".encode("utf-8"))
+            # APK
+            f.write("<td>")
+            f.write(("%.2f" % APKList[i][0]))
+            f.write("</td>")
+            
+            # Name
+            f.write('<td><a href="https://www.systembolaget.se/')
+            f.write(str(APKList[i][5]))
+            f.write('">')
+            f.write(APKList[i][1])
+            f.write("</a></td>")
+            
+            # Type
+            f.write("<td>")
+            f.write((APKList[i][2]))
+            f.write("</td>")
 
-    f.write("</tr>".encode("utf-8"))
-f.write("</table>".encode("utf-8"))
+            # Other Type
+            f.write("<td>")
+            f.write((APKList[i][4]))
+            f.write("</td>")
+
+            #Style
+            f.write("<td>")
+            f.write(APKList[i][3])
+            f.write("</td>")
+
+            f.write("</tr>")
+        f.write("</table>\n")
+        # this skips the next line, which includes the old table
+        next(lines)
+    else:
+        f.writelines(line)
+
 f.close()
