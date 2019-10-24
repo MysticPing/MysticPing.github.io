@@ -166,7 +166,7 @@ for i, line in enumerate(lines):
 f.close()
 print("Cleaning sheet files.")
 os.remove("old_format.xls")
-os.remove("new_format.xlsx")
+#os.remove("new_format.xlsx")
 
 print("Making and pushing commit.")
 subprocess.call(["git", "commit", "-am", "Automatic Update "+datetime.now().strftime('%Y-%m-%d')])
