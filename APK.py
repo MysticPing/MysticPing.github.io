@@ -2,6 +2,7 @@ import pandas as pd
 import openpyxl as op
 import urllib.request
 import os
+import sys
 from datetime import datetime
 import subprocess
 
@@ -23,6 +24,9 @@ def convert():
 # Uncomment these two functions when you want to update the spreadsheets
 download_xls()
 convert()
+
+# Set working directory to script location
+os.chdir(sys.path[0])
 
 print("Loading into openpyxl.")
 wb = op.load_workbook("new_format.xlsx")
