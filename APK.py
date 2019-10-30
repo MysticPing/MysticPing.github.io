@@ -21,8 +21,12 @@ def convert():
     old_format = pd.read_html("old_format.xls")
     old_format[0].to_excel("new_format.xlsx")
 
+
 # Set working directory to script location
 os.chdir(sys.path[0])
+
+# Debug information
+print("\nAutomatic update " + datetime.now().strftime('%Y-%m-%d %H:%M'))
 
 # Uncomment these two functions when you want to update the spreadsheets
 download_xls()
