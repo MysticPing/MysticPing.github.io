@@ -104,7 +104,7 @@ for i, line in enumerate(lines):
         # header and table start
         f.write("<!--table_location-->")
         f.write('\n<table id = "apktable">')
-        f.write("<thead><tr><th></th><th>APK</th><th>Name</th><th>Type</th><th>Style</th><th>ABV</th><th>Volume</th><th>Price</th></tr></thead>")
+        f.write("<thead><tr><th></th><th>APK</th><th>Namn</th><th>Typ</th><th>Stil</th><th>ABV</th><th>Volym</th><th>Pris</th></tr></thead>")
         for i in range(len(APKList)):
             f.write("<tr>")
             # Number
@@ -164,8 +164,8 @@ for i, line in enumerate(lines):
         f.write("</table>\n")
         # this skips the next line, which includes the old table
         next(lines)
-    elif "Last updated:" in line:
-        f.write("Last updated: ")
+    elif "Senast uppdaterad: " in line:
+        f.write("Senast uppdaterad: ")
         f.write(datetime.now().strftime('%Y-%m-%d %H:%M'))
         f.write('\n')
     else:
