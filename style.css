@@ -31,6 +31,7 @@ div.mainText {
     margin-right: 10%;
     background: white;
     height: 100%;
+    color: #222222;
 }
 
 div.mainText p {
@@ -71,7 +72,7 @@ table td {
 table a {
     display:block;
     text-decoration: none;
-    color: black;
+    color: #222222;
 }
 
 tr:hover {
@@ -94,6 +95,6 @@ table.noborder tr:hover {
 html, body {
     margin: 0;
     font-family: adobesource;
-    background: linear-gradient(to left, #cccccc, #dddddd);;
+    background: linear-gradient(to left, #dddddd, #eeeeee);;
 }
 
