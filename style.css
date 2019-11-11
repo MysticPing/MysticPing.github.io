@@ -39,6 +39,11 @@ div.mainText p {
     margin-right: 10%;
 }
 
+div.mainText>button {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 div.mainText table{
     margin-left: 10%;
     width: 80%;
@@ -91,10 +96,22 @@ table.noborder tr:hover {
     background: white;
 }
 
+.collapsible {
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  padding: 6px;
+  border: none;
+  text-align: left;
+  outline: none;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
 
 html, body {
     margin: 0;
     font-family: adobesource;
     background: #eeeeee;
 }
-
