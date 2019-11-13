@@ -3,6 +3,7 @@ import openpyxl as op
 import urllib.request
 import os
 import sys
+import json
 from datetime import datetime
 import subprocess
 
@@ -27,7 +28,6 @@ os.chdir(sys.path[0])
 
 # Debug information
 print("\nAutomatic update " + datetime.now().strftime('%Y-%m-%d %H:%M'))
-
 # Uncomment these two functions when you want to update the spreadsheets
 download_xls()
 convert()
@@ -48,13 +48,13 @@ for row in iterRow:
     volume = row[8].value
     # Alkohok by %. Stored as a string
     # Convert to actual value by removing % and converting to float
-    ABVstr = row[23].value.strip('%')
-    ABV = float(ABVstr)/100
+    ABV = float(row[23].value.strip('%'))
+    ABVRounded = round(ABV,2)
     # Price. row 7 is sometimes empty. Row 7 is deposit
     price = row[6].value
     if (row[7].value != None):
         price += row[7].value
-    APK = (ABV*volume)/price
+    APK = ((ABV/100)*volume)/price
     # Name
     name1 = str(row[4].value)
     if (name1 == 'None'):
@@ -64,15 +64,12 @@ for row in iterRow:
         name2 = ""
     name = name1 + " " + name2
     # Type
-    itemtype = row[12].value
-    # More specific type
-    spectype = str(row[13].value)
-    if (spectype == 'None'):
-        spectype = '' 
+    itemType = str(row[12].value)
+    if (itemType == 'None'):
+        itemType = ''
     # Style
-    style = str(row[14].value)
-    if (style == 'None'):
-        style = ''
+    itemStyle = str(row[14].value)
+    itemStyle = "" if (itemStyle == 'None') else itemStyle
 
     # Availability
     # FS ordinarie sortiment
@@ -85,17 +82,28 @@ for row in iterRow:
     # TSS Seasonal
     availability = row[24].value
     # Add to list, APK and Name
-    APKList.append((APK, name, itemtype, style, spectype, ID, ABVstr, volume, price, availability))
+    if (APK != 0):
+        APKList.append([round(APK,3), 0, ID, name, itemType, itemStyle, ABVRounded, volume, round(price,2), availability])
 
 # Sorted for highest APK first
 APKList.sort(reverse=True)
+
+# Add index after sorting
+for i,v in enumerate(iter(APKList)):
+    APKList[i][1] = (i+1)
+# Write to json file
+print("Creating json data")
+f = open('data.json', 'w')
+json.dump(APKList, f)
+f.close()
 
 # Save existing lines
 f = open("apk.html", "r", encoding="utf-8")
 data = f.readlines()
 lines = iter(data)
 f.close()
-
+# Writing initial table
+print("Creaint initial html table")
 # Keep all existing lines except when you encounter table_location, then replace next line
 f = open("apk.html", "w", encoding="utf-8")
 print ("Creating html table.")
@@ -104,60 +112,57 @@ for i, line in enumerate(lines):
         # header and table start
         f.write("<!--table_location-->")
         f.write('\n<table id = "apktable">')
-        f.write("<thead><tr><th></th><th>APK</th><th>Namn</th><th>Typ</th><th>Stil</th><th>ABV</th><th>Volym</th><th>Pris</th></tr></thead>")
-        for i in range(len(APKList)):
+        f.write('<thead><tr><th></th><th>APK</th><th>Namn <input id="nameFilter""></th><th>Typ <input id="typeFilter"></th><th>Alkohol</th><th>Volym</th><th>Pris</th></tr></thead>')
+        for i in range(0,201):
+            APKItem = APKList[i]
             f.write("<tr>")
             # Number
             f.write("<td><strong>")
-            f.write(str(i+1))
+            f.write(str(APKItem[1]))
             f.write("</strong></td>")
 
             # APK
             f.write("<td>")
-            f.write(("%.3f" % APKList[i][0]))
+            f.write(str(APKItem[0]))
             f.write("</td>")
             
             # Name
             f.write('<td><a href="https://www.systembolaget.se/')
-            f.write(str(APKList[i][5]))
+            f.write(str(APKItem[2]))
             f.write('">')
-            f.write(APKList[i][1])
+            f.write(APKItem[3])
             f.write("</a></td>")
             
             # Type
             f.write("<td>")
-            f.write((APKList[i][2]))
+            f.write(APKItem[4] if APKItem[5] == "" else APKItem[4] + "    <i>"+APKItem[5]+"</i>")
             f.write("</td>")
-
-            # Style. If it contains more details add those with a dash seperator
+            '''
+            # Type If it contains more details add those with a dash seperator
             f.write("<td>")
-            f.write(APKList[i][4])
-
-            if APKList[i][3] != "":
-                f.write(" — " + APKList[i][3])
-            f.write("</td>")
-
+            f.write(APKItem[5])
+            '''
             # ABV
             f.write("<td>")
-            f.write("%.1f" % float(APKList[i][6]))
+            f.write(str(APKItem[6]))
             f.write("%")
             f.write("</td>")           
             
              # Volume
             f.write("<td>")
-            f.write(str(APKList[i][7]))
+            f.write(str(APKItem[7]))
             f.write(" ml")
             f.write("</td>")
 
             # Price
             f.write("<td>")
-            f.write("%.2f" % APKList[i][8])
+            f.write(str(APKItem[8]))
             f.write(" kr")
             f.write("</td>")
 
             # Availability
             f.write('<td style="display: none;">')
-            f.write(APKList[i][9])
+            f.write(APKItem[9])
             f.write("</td>")
 
             f.write("</tr>")
@@ -170,8 +175,8 @@ for i, line in enumerate(lines):
         f.write('\n')
     else:
         f.writelines(line)
-
 f.close()
+
 print("Cleaning sheet files.")
 os.remove("old_format.xls")
 os.remove("new_format.xlsx")

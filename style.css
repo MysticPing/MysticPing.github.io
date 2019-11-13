@@ -39,9 +39,25 @@ div.mainText p {
     margin-right: 10%;
 }
 
-div.mainText>button {
-    margin-left: 10%;
-    margin-right: 10%;
+div.tableNav>button {
+    background: #333333;
+    color: white;
+    padding: 4px;
+    font-weight: bolder;
+    border: none;
+}
+div.tableNav>button:hover{
+    background: #555;
+    cursor: pointer;
+}
+div.tableNav>input{
+    color: white;
+    background: #444444;
+    padding: 4px;
+    border: none;
+    text-align: center;
+    font-weight: bolder;
+    width: 4%;
 }
 
 div.mainText table{
@@ -69,6 +85,19 @@ table th {
     padding: 8px;
 }
 
+table input {
+    color: white;
+    background: #444444;
+    padding: 0px;
+    border: none;
+    border-left-style: solid;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bolder;
+    width: 80%;
+    margin-left: 3%;
+}
+
 table td {
     text-align: left;
     padding: 6px;
@@ -78,6 +107,10 @@ table a {
     display:block;
     text-decoration: none;
     color: #222222;
+}
+
+table i {
+    color: #444444;
 }
 
 tr:hover {
