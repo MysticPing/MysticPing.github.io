@@ -61,6 +61,8 @@ Senast uppdaterad: 2019-11-13 20:46
     function tableBuilder (from, to) {
       var nameFilter = document.getElementById("nameFilter").value.toLowerCase();
       var valueFilter = document.getElementById("typeFilter").value.toLowerCase();
+      table = document.getElementById("apktable");
+
       // Clear existing table
       table.childNodes[1].innerHTML = "";
       // Build new
@@ -70,7 +72,7 @@ Senast uppdaterad: 2019-11-13 20:46
         if  (APKItem[3].toLowerCase().indexOf(nameFilter) >-1 &&
             (APKItem[4].toLowerCase().indexOf(valueFilter) >-1 || APKItem[5].toLowerCase().indexOf(valueFilter)  >-1)) {
           rows[i] = "<tr>"+ 
-          "<td><strong>"+(APKItem[1]+1)+"</strong></td>"+
+          "<td><strong>"+(APKItem[1])+"</strong></td>"+
           "<td>"+APKItem[0]+"</td>"+
           "<td><a href=https://www.systembolaget.se/"+APKItem[2]+">"+APKItem[3]+"</a></td>"+
           "<td>"+(APKItem[5] == "" ? APKItem[4] : APKItem[4] + " <i>"+APKItem[5]+"</i></td>")+
