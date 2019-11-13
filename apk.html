@@ -32,6 +32,11 @@
     Uppdateras automatiskt varje dag. <br>
 Senast uppdaterad: 2019-11-13 20:46
   </p>
+  <p>
+    Sidan är under konstruktion. För tillfället går det inte att som innan filtrera efter tillgänglighet (t.ex för att inte se beställningsvaror) men det återkommer snart.<br>
+    Utöver det så uppdaterar inte hemsidan vilken sida i tabellen som är sist efter den har blivit filtrerad.<br>
+    Annars så ska den nya versionen vara ~70% mindre och borde därför fungera mycket bättre på telefoner och långsammare datorer.
+  </p>
   <div class="tableNav"> 
   <button onclick="pageSkip(0)">«</button><button onclick="pageNav(-1)">‹</button><input id ="pageNum" value="1"></input><button onclick="pageNav(1)">›</button><button onclick="pageSkip(1)">»</button>
   </div>
@@ -67,19 +72,29 @@ Senast uppdaterad: 2019-11-13 20:46
       table.childNodes[1].innerHTML = "";
       // Build new
       var rows = []
-      for (i = from; i < (to+1) && jsondata[i] != null; i++) {
+      var passed = 0;
+      for (i = 0; i < jsondata.length; i++) {
         var APKItem = jsondata[i]
         if  (APKItem[3].toLowerCase().indexOf(nameFilter) >-1 &&
             (APKItem[4].toLowerCase().indexOf(valueFilter) >-1 || APKItem[5].toLowerCase().indexOf(valueFilter)  >-1)) {
-          rows[i] = "<tr>"+ 
-          "<td><strong>"+(APKItem[1])+"</strong></td>"+
-          "<td>"+APKItem[0]+"</td>"+
-          "<td><a href=https://www.systembolaget.se/"+APKItem[2]+">"+APKItem[3]+"</a></td>"+
-          "<td>"+(APKItem[5] == "" ? APKItem[4] : APKItem[4] + " <i>"+APKItem[5]+"</i></td>")+
-          "<td>"+APKItem[6]+"%</td>"+
-          "<td>"+APKItem[7]+" ml</td>"+
-          "<td>"+APKItem[8]+" kr</td>";
-          table.childNodes[1].innerHTML += rows[i];
+          passed += 1;
+          if (passed <= from) {
+            continue;
+          }
+          else if (passed <= to+1) {
+            rows[i] = "<tr>"+ 
+            "<td><strong>"+(APKItem[1])+"</strong></td>"+
+            "<td>"+APKItem[0]+"</td>"+
+            "<td><a href=https://www.systembolaget.se/"+APKItem[2]+">"+APKItem[3]+"</a></td>"+
+            "<td>"+(APKItem[5] == "" ? APKItem[4] : APKItem[4] + " <i>"+APKItem[5]+"</i></td>")+
+            "<td>"+APKItem[6]+"%</td>"+
+            "<td>"+APKItem[7]+" ml</td>"+
+            "<td>"+APKItem[8]+" kr</td>";
+            table.childNodes[1].innerHTML += rows[i];
+          }
+          else {
+            return;
+          }
         }
       }
     }    
