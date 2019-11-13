@@ -113,7 +113,7 @@ for i, line in enumerate(lines):
         f.write("<!--table_location-->")
         f.write('\n<table id = "apktable">')
         f.write('<thead><tr><th></th><th>APK</th><th>Namn <input id="nameFilter""></th><th>Typ <input id="typeFilter"></th><th>Alkohol</th><th>Volym</th><th>Pris</th></tr></thead>')
-        for i in range(0,200):
+        for i in range(0,201):
             APKItem = APKList[i]
             f.write("<tr>")
             # Number
