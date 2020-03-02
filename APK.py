@@ -171,6 +171,7 @@ for i, line in enumerate(lines):
         next(lines)
     elif "Senast uppdaterad: " in line:
         f.write("Senast uppdaterad: ")
+        print ("Updating last updated text.")
         f.write(datetime.now().strftime('%Y-%m-%d %H:%M'))
         f.write('\n')
     else:
