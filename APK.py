@@ -98,7 +98,7 @@ json.dump(APKList, f)
 f.close()
 
 # Save existing lines
-f = open("apk.html", "r", encoding="utf-8")
+f = open("index.html", "r", encoding="utf-8")
 data = f.readlines()
 lines = iter(data)
 f.close()
