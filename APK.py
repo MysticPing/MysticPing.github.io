@@ -105,7 +105,7 @@ f.close()
 # Writing initial table
 print("Creaint initial html table")
 # Keep all existing lines except when you encounter table_location, then replace next line
-f = open("apk.html", "w", encoding="utf-8")
+f = open("index.html", "w", encoding="utf-8")
 print ("Creating html table.")
 for i, line in enumerate(lines):
     if line == "<!--table_location-->\n":
