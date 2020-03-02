@@ -12,8 +12,8 @@
 <!--Navbar-->
 <div class="navBar">
     <ul>
-      <li><a href="apk.html">APK</a></li>
-      <li><a href="index.html">Om</a></li>
+      <li><a href="index.html">APK</a></li>
+      <li><a href="about.html">Om</a></li>
     </ul>
   </div>
 
@@ -25,20 +25,13 @@
     </p>
   </h1>  
   <p>
-    Alkohol per krona mätt med milliliter etanol per krona.<br>
-    Använder systembolagets öppna API. Hemsidan är inte associerad med systembolaget.
+    Alkohol per krona mätt som milliliter etanol per krona.<br>
   </p>
   <p>
     Uppdateras automatiskt varje dag. <br>
 Senast uppdaterad: 2020-03-02 19:03
   </p>
-  <p>
-    TODO: <br>
-    * Ändra maxsidan i tabellen efter filtrering så att "»" knappen alltid ger sista sidan.<br>
-    * Återimplementera filtrering efter tillgänglighet (t.ex filtrera bort beställningsvaror)<br><br>
-    Annars så ska den nya versionen vara ~70% mindre i filstorlek och borde därför fungera mycket bättre på telefoner och långsammare datorer.<br>
-    Varje sida av tabellen visar (om det finns) 200 produkter. För nuvarande finns det ~18,400 produkter och 92 sidor.
-  </p>
+
   <div class="tableNav"> 
   <button onclick="pageSkip(0)">«</button><button onclick="pageNav(-1)">‹</button><input id ="pageNum" value="1"></input><button onclick="pageNav(1)">›</button><button onclick="pageSkip(1)">»</button>
   </div>
@@ -51,7 +44,7 @@ Senast uppdaterad: 2020-03-02 19:03
     var pageNumber = document.getElementById("pageNum");
     loadXMLDoc();
     async function loadXMLDoc() {
-      return fetch("https://victorelhajj.se/data.json")
+      return fetch("https://alkoholperkrona.se/data.json")
       .then(function (response) {
         return response.json();
       })  
