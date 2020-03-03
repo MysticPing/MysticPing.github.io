@@ -39,6 +39,21 @@ div.mainText p {
     margin-right: 10%;
 }
 
+div.mainText h1 {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+div.mainText h2 {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+div.mainText ul {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 div.tableNav>button {
     background: #333333;
     color: white;
