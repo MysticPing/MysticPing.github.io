@@ -1,6 +1,8 @@
 import pandas as pd
 import openpyxl as op
 import urllib.request
+import urllib3
+import requests
 import os
 import sys
 import json
@@ -9,9 +11,16 @@ import subprocess
 
 # Downloads xls file
 def download_xls():
+    requests.packages.urllib3.disable_warnings()
+    requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += 'HIGH:!DH:!aNULL'
+    try:
+        requests.packages.urllib3.contrib.pyopenssl.DEFAULT_SSL_CIPHER_LIST += 'HIGH:!DH:!aNULL'
+    except AttributeError:
+        pass
     print("Downloading xls.")
     url = "https://www.systembolaget.se/api/assortment/products/xls"
-    urllib.request.urlretrieve(url, "old_format.xls")
+    r = requests.get(url)
+    open('old_format.xls', 'wb').write(r.content)
 
 # Converts from xls to xslx using pandas. Takes a while.
 # Also rather inefficient, i'd prefer to manipulate the old file driectly
