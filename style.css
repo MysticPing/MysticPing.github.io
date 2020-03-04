@@ -92,6 +92,11 @@ div.mainText div{
     src: url('SourceSansPro-Regular.ttf');
 }
 
+a.privpol {
+    text-decoration: none;
+    color: #222222;
+}
+
 table {
     border-collapse: collapse;
 }
