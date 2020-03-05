@@ -32,6 +32,7 @@ div.mainText {
     background: white;
     height: 100%;
     color: #222222;
+    font-size: 16px;
 }
 
 div.mainText p {
@@ -115,7 +116,7 @@ table input {
     border: none;
     border-left-style: solid;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bolder;
     width: 80%;
     margin-left: 3%;
