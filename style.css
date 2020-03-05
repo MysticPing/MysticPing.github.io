@@ -89,6 +89,7 @@ div.mainText div{
 }
 
 @font-face {
+    font-display: swap;
     font-family: adobesource;
     src: url('SourceSansPro-Regular.ttf');
 }
