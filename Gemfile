@@ -13,3 +13,7 @@ gem "json", "~> 2.3"
 gem "nokogiri", "~> 1.10"
 
 gem "sqlite3", "~> 1.4"
+
+gem "rspec", "~> 3.9"
+
+gem "minitest", "~> 5.14"
