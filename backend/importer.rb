@@ -3,9 +3,9 @@
 require "sqlite3"
 
 class Importer
-    def import(apk_list)
+    def import(apk_list, path)
         print("Importing values... ")
-        db = SQLite3::Database.new "apk.db"
+        db = SQLite3::Database.new path
         db.execute <<-SQL
         DROP TABLE IF EXISTS apk;
         SQL
@@ -26,7 +26,8 @@ class Importer
         apk_list.each do |article|
             id           = article[:artikelid]
             name         = article.fetch(:namn, "") + " " + article.fetch(:namn2, "") 
-            price        = (article.fetch(:prisinklmoms, 0).to_f + article.fetch(:pant, 0).to_f).to_s + " kr"
+            price        = (article.fetch(:prisinklmoms, 0).to_f + article.fetch(:pant, 0).to_f).round(1)
+            price        = if (price == price.to_i) then price.to_i.to_s else price.to_s end + " kr"
             volume       = article.fetch(:volymiml, "") + " ml"
             type         = article.fetch(:varugrupp, "")
             style        = article.fetch(:stil, "")
@@ -43,6 +44,7 @@ class Importer
             rs = insert.execute id, apk, name, price, volume, type, style, abv, availability
         end
         db.commit
+        return db
         puts ("done")
     end
 end
