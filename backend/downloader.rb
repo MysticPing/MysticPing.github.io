@@ -4,19 +4,44 @@ require "net/http"
 require "uri"
 
 class Downloader
+
+    def initialize(max_attempts, backoff)
+        @max_attempts = max_attempts
+        @backoff = backoff
+    end
+
     def download(file_uri)
         uri = URI.parse(file_uri)
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = true
-        request = Net::HTTP::Get.new(uri.request_uri)
+        @http = Net::HTTP.new(uri.host, uri.port)
+        @http.use_ssl = true
+        @request = Net::HTTP::Get.new(uri.request_uri)
         print "Downloading #{file_uri}... "
-        response = http.request(request)
+        attempt(0)
+    end
 
-        if response.code == "200"
-            print "done\n"
-            return response.body
-        else
-            puts "Error downloading file, response code: #{response.code}"
+    private
+
+    def attempt(attempt)
+        if attempt > 0 then sleep(2 ** attempt * @backoff) end
+        if attempt > @max_attempts then raise Exception.new("download failed after max attempts: #{@max_attempts}") end
+        begin
+            response = @http.request(@request)
+            if response.code == "200"
+                print "done\n"
+                return response.body
+            else
+                raise StandardError.new(response.code)
+            end
+        rescue Errno::ETIMEDOUT => e
+            puts "Connection timed out... retrying with backoff #{2 ** attempt * @backoff}s"
+            attempt += 1
+            attempt(attempt)
+            retry
+        rescue StandardError => e
+            puts "Connection returned #{e.message}... retrying with backoff #{2 ** attempt * @backoff}s"
+            attempt += 1
+            attempt(attempt)
+            retry
         end
     end
 end
