@@ -44,7 +44,7 @@ class Importer
             rs = insert.execute id, apk, name, price, volume, type, style, abv, availability
         end
         db.commit
-        return db
         puts ("done")
+        return db
     end
 end
