@@ -5,7 +5,7 @@ require "uri"
 
 class Downloader
 
-    def initialize(max_attempts, backoff)
+    def initialize(max_attempts: 0, backoff: 0)
         @max_attempts = max_attempts
         @backoff = backoff
     end

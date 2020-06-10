@@ -9,7 +9,7 @@ class Importer
         db.execute <<-SQL
         DROP TABLE IF EXISTS apk;
         SQL
-        db.execute <<-SQL
+        db.execute <<~SQL
         CREATE TABLE IF NOT EXISTS apk (
             id           INTEGER PRIMARY KEY,
             apk          REAL,
