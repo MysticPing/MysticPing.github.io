@@ -86,6 +86,7 @@ DEPENDENCIES
   minitest (~> 5.14)
   nokogiri (~> 1.10)
   rspec (~> 3.9)
+  rspec-core (~> 3.9)
   sqlite3 (~> 1.4)
   travis (~> 1.9)
   uri (~> 0.10.0)

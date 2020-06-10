@@ -19,3 +19,5 @@ gem "rspec", "~> 3.9"
 gem "minitest", "~> 5.14"
 
 gem "travis", "~> 1.9"
+
+gem "rspec-core", "~> 3.9"
