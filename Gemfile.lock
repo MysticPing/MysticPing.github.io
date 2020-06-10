@@ -16,6 +16,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
+    ffi (1.13.1)
     ffi (1.13.1-x64-mingw32)
     gh (0.17.0)
       activesupport (~> 5.0)
@@ -37,6 +38,8 @@ GEM
     multipart-post (2.1.1)
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
     nokogiri (1.10.9-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     public_suffix (4.0.5)
@@ -76,6 +79,7 @@ GEM
 
 PLATFORMS
   x64-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   json (~> 2.3)
