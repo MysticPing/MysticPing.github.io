@@ -17,3 +17,5 @@ gem "sqlite3", "~> 1.4"
 gem "rspec", "~> 3.9"
 
 gem "minitest", "~> 5.14"
+
+gem "travis", "~> 1.9"
