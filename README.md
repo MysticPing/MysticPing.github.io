@@ -1,11 +1,12 @@
-# victorelhajj.github.io
+# Alkoholperkrona.nu
 
 This project is for a website that displays and sorts Systembolaget's products by APK (Alcohol per krona). 
-It also includes a script for automatically updating the data that runs once per day.
+While it is currently being rewritten completely here is the sketched future system architecture:
 
-Todo list:
-* Allow to sort by availability. For example removing items that can only be ordered online or seasonal items.
-* Migrate code from JSON to SQLite
-* Allow to sort by traits other than APK, like volume or price.
+![Image of Yaktocat](https://i.imgur.com/dEJXrpO.png)
+
+Features that are planned after the rewrite:
+* Allow to sort by different columns, as well as filter by availability (seasonal, temporary etc).
+* Possibly scrape systembolaget website to allow to filter by store location.
 
 [Visit the website.](https://www.alkoholperkrona.nu)
