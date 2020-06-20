@@ -1,7 +1,3 @@
-require_relative "downloader"
-require_relative "extractor"
-require_relative "importer"
-
 class Collector
     def initialize(downloader, extractor, importer, writer)
         @downloader = downloader
