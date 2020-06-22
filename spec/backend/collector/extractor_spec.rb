@@ -1,4 +1,4 @@
-require_relative "../../backend/extractor"
+require_relative "../../../backend/collector/extractor"
 
 describe Extractor do
     describe "extract" do
@@ -35,21 +35,21 @@ describe Extractor do
             [
                 {
                     nr: '1',
-                    artikelid: '2',
+                    artikelid: 2,
                     varnummer: '3',
                     namn: '4',
                     namn2: '5',
-                    prisinklmoms: '6.00',
-                    pant: '7.00'
+                    prisinklmoms: 6.00,
+                    pant: 7.00
                 },
                 {
                     nr: '8',
-                    artikelid: '9',
+                    artikelid: 9,
                     varnummer: '10',
                     namn: '11',
                     namn2: '12',
-                    prisinklmoms: '13.00',
-                    pant: '14.00'
+                    prisinklmoms: 13.00,
+                    pant: 14.00
                 }
             ]
         end
