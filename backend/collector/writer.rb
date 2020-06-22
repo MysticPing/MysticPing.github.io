@@ -37,5 +37,6 @@ class Writer
         end
         @db.commit
         puts "done"
+        @db
     end
 end
