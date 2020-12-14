@@ -9,4 +9,4 @@ Features that are planned after the rewrite:
 * Allow to sort by different columns, as well as filter by availability (seasonal, temporary etc).
 * Possibly scrape systembolaget website to allow to filter by store location.
 
-[Visit the website.](https://www.alkoholperkrona.nu)
+[Visit the website.](https://alkoholperkrona.nu)
